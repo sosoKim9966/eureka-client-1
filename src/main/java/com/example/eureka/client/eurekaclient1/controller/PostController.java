@@ -19,7 +19,7 @@ public class PostController {
 
     @GetMapping("/search")
     public ResponseEntity searchPost(@RequestBody PostDto postDto) {
-        return new ResponseEntity<>(postService.findByTitleOrContent(postDto.getTitle(), postDto.getContent(), HttpStatus.OK);
+        return new ResponseEntity<>(postService.findByTitleOrContent(postDto.getTitle(), postDto.getContent()), HttpStatus.OK);
     }
 
 }
