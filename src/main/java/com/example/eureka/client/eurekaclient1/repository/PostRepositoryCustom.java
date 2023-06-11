@@ -6,7 +6,7 @@ import com.example.eureka.client.eurekaclient1.dto.PostUserDto;
 import java.util.List;
 
 public interface PostRepositoryCustom {
-    List<Post> getPost();
+    List<Post> getPosts();
     List<Post> getPostsFetchJoin();
     List<Post> getPostsNoRelation();
     List<PostUserDto> getDto();
