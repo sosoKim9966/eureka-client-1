@@ -1,6 +1,8 @@
 package com.example.eureka.client.eurekaclient1.repository.impl;
+import com.example.eureka.client.eurekaclient1.dto.QPostUserDto;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.example.eureka.client.eurekaclient1.domain.Post;
+//import com.example.eureka.client.eurekaclient1.dto.QPostUserDTO;
 import com.example.eureka.client.eurekaclient1.dto.PostUserDto;
 
 import com.example.eureka.client.eurekaclient1.repository.PostRepositoryCustom;
@@ -43,7 +45,11 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
 
     @Override
     public List<PostUserDto> getDto() {
-        return null;
+        return jpaQueryFactory
+                .select(new QPostUserDto(post.title, post.content, user.email, user.userName))
+                .from(post)
+                .join(user).on(post.user.id.eq(user.id))
+                .fetch();
     }
 
 }
